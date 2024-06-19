@@ -56,10 +56,8 @@ FieldFunctionGridBased::FieldFunctionGridBased(const InputParameters& params)
 }
 
 FieldFunctionGridBased::FieldFunctionGridBased(
-  std::string text_name,
-  std::shared_ptr<SpatialDiscretization>& discretization_ptr,
-  Unknown unknown)
-  : FieldFunction(std::move(text_name), std::move(unknown)),
+  std::string name, std::shared_ptr<SpatialDiscretization>& discretization_ptr, Unknown unknown)
+  : FieldFunction(std::move(name), std::move(unknown)),
     discretization_(discretization_ptr),
     ghosted_field_vector_(MakeFieldVector(*discretization_, GetUnknownManager())),
     local_grid_bounding_box_(discretization_->Grid().GetLocalBoundingBox())
@@ -67,11 +65,11 @@ FieldFunctionGridBased::FieldFunctionGridBased(
 }
 
 FieldFunctionGridBased::FieldFunctionGridBased(
-  std::string text_name,
+  std::string name,
   std::shared_ptr<SpatialDiscretization>& discretization_ptr,
   Unknown unknown,
   const std::vector<double>& field_vector)
-  : FieldFunction(std::move(text_name), std::move(unknown)),
+  : FieldFunction(std::move(name), std::move(unknown)),
     discretization_(discretization_ptr),
     ghosted_field_vector_(MakeFieldVector(*discretization_, GetUnknownManager())),
     local_grid_bounding_box_(discretization_->Grid().GetLocalBoundingBox())
@@ -83,11 +81,11 @@ FieldFunctionGridBased::FieldFunctionGridBased(
 }
 
 FieldFunctionGridBased::FieldFunctionGridBased(
-  std::string text_name,
+  std::string name,
   std::shared_ptr<SpatialDiscretization>& discretization_ptr,
   Unknown unknown,
   double field_value)
-  : FieldFunction(std::move(text_name), std::move(unknown)),
+  : FieldFunction(std::move(name), std::move(unknown)),
     discretization_(discretization_ptr),
     ghosted_field_vector_(MakeFieldVector(*discretization_, GetUnknownManager())),
     local_grid_bounding_box_(discretization_->Grid().GetLocalBoundingBox())
@@ -263,7 +261,7 @@ FieldFunctionGridBased::ExportMultipleToVTK(
 
     for (uint c = 0; c < num_comps; ++c)
     {
-      std::string component_name = ff_ptr->TextName() + unknown.text_name_;
+      std::string component_name = ff_ptr->Name() + unknown.text_name_;
       if (num_comps > 1)
         component_name += unknown.component_text_names_[c];
 

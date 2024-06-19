@@ -14,7 +14,7 @@ class Cell;
 class FieldFunction : public Object
 {
 protected:
-  std::string text_name_;
+  std::string name_;
   Unknown unknown_;
   UnknownManager unknown_manager_;
 
@@ -22,12 +22,12 @@ public:
   static InputParameters GetInputParameters();
   explicit FieldFunction(const InputParameters& params);
 
-  FieldFunction(std::string text_name, Unknown unknown);
+  FieldFunction(std::string name, Unknown unknown);
 
   virtual ~FieldFunction() = default;
 
   /// Returns the text name of the field function.
-  const std::string& TextName() const { return text_name_; }
+  const std::string& Name() const { return name_; }
   /**Returns a reference to the unknown structure.*/
   const Unknown& GetUnknown() const { return unknown_; }
   /// Returns a reference to the unknown manager that can be with spatial discretizations.

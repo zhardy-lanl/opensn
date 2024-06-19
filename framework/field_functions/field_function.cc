@@ -30,7 +30,7 @@ FieldFunction::GetInputParameters()
 
 FieldFunction::FieldFunction(const InputParameters& params)
   : Object(params),
-    text_name_(params.GetParamValue<std::string>("name")),
+    name_(params.GetParamValue<std::string>("name")),
     unknown_(
       (params.GetParamValue<std::string>("unknown_type") == "Scalar") ? Unknown(UnknownType::SCALAR)
       : (params.GetParamValue<std::string>("unknown_type") == "Vector2")
@@ -44,8 +44,8 @@ FieldFunction::FieldFunction(const InputParameters& params)
 {
 }
 
-FieldFunction::FieldFunction(std::string text_name, Unknown unknown)
-  : text_name_(std::move(text_name)), unknown_(std::move(unknown)), unknown_manager_({unknown_})
+FieldFunction::FieldFunction(std::string name, Unknown unknown)
+  : name_(std::move(name)), unknown_(std::move(unknown)), unknown_manager_({unknown_})
 {
 }
 

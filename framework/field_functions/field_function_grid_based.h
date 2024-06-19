@@ -28,7 +28,7 @@ public:
   explicit FieldFunctionGridBased(const InputParameters& params);
 
   /// Creates a field function, filling it with zeros.
-  FieldFunctionGridBased(std::string text_name,
+  FieldFunctionGridBased(std::string name,
                          std::shared_ptr<SpatialDiscretization>& discretization_ptr,
                          Unknown unknown);
 
@@ -36,13 +36,13 @@ public:
    * Creates a field function with an associated field vector. The field's data vector is set to the
    * incoming field vector.
    */
-  FieldFunctionGridBased(std::string text_name,
+  FieldFunctionGridBased(std::string name,
                          std::shared_ptr<SpatialDiscretization>& discretization_ptr,
                          Unknown unknown,
                          const std::vector<double>& field_vector);
 
   /// Creates a field function where all the values are assigned to the single supplied value.
-  FieldFunctionGridBased(std::string text_name,
+  FieldFunctionGridBased(std::string name,
                          std::shared_ptr<SpatialDiscretization>& discretization_ptr,
                          Unknown unknown,
                          double field_value);
