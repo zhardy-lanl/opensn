@@ -3,7 +3,7 @@
 
 #include "lua/framework/console/console.h"
 #include "framework/runtime.h"
-#include "framework/physics/solver_base/solver.h"
+#include "framework/physics/solver.h"
 #include "modules/cfem_diffusion/cfem_diffusion_solver.h"
 #include "lua/modules/cfem_diffusion/cfem_diff_solver.h"
 #include "modules/dfem_diffusion/dfem_diffusion_solver.h"
