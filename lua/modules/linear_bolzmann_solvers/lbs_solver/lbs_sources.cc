@@ -66,7 +66,7 @@ AddDistributedSource(lua_State* L)
   lbs_solver.AddDistributedSource(std::move(
     opensn::GetStackItem<opensn::lbs::DistributedSource>(object_stack, src_handle, __FUNCTION__)));
 
-  opensn::log.Log() << lbs_solver.TextName() << ": Added distributed source.";
+  opensn::log.Log() << lbs_solver.Name() << ": Added distributed source.";
   return LuaReturn(L);
 }
 

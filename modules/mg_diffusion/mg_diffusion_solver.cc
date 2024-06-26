@@ -61,7 +61,7 @@ void
 Solver::Initialize()
 {
   log.Log() << "\n"
-            << program_timer.GetTimeString() << " " << TextName()
+            << program_timer.GetTimeString() << " " << Name()
             << ": Initializing CFEM Multigroup Diffusion solver ";
 
   // Get grid
@@ -179,8 +179,8 @@ Solver::Initialize()
     for (uint g = 0; g < mg_diffusion::Solver::num_groups_; ++g)
     {
       std::string solver_name;
-      if (not TextName().empty())
-        solver_name = TextName() + "-";
+      if (not Name().empty())
+        solver_name = Name() + "-";
 
       char buff[100];
       int dummy = snprintf(buff, 4, "%03d", g);
@@ -704,7 +704,7 @@ Solver::Execute()
   // Create Krylov Solver
   // setup KSP once for all
   petsc_solver_ = CreateCommonKrylovSolverSetup(A_.front(),
-                                                TextName(),
+                                                Name(),
                                                 KSPCG,
                                                 PCGAMG,
                                                 0.0,

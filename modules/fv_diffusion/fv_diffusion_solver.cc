@@ -53,7 +53,7 @@ fv_diffusion::Solver::Initialize()
 {
   const std::string fname = "fv_diffusion::Solver::Initialize";
   log.Log() << "\n"
-            << program_timer.GetTimeString() << " " << TextName()
+            << program_timer.GetTimeString() << " " << Name()
             << ": Initializing CFEM Diffusion solver ";
 
   // Get grid
@@ -165,8 +165,8 @@ fv_diffusion::Solver::Initialize()
   if (field_functions_.empty())
   {
     std::string solver_name;
-    if (not TextName().empty())
-      solver_name = TextName() + "-";
+    if (not Name().empty())
+      solver_name = Name() + "-";
 
     std::string text_name = solver_name + "phi";
 
@@ -284,7 +284,7 @@ fv_diffusion::Solver::Execute()
   log.Log() << "Solving: ";
   auto petsc_solver =
     CreateCommonKrylovSolverSetup(A_,
-                                  TextName(),
+                                  Name(),
                                   KSPCG,
                                   PCGAMG,
                                   0.0,
